@@ -1,11 +1,12 @@
 const request = require("supertest");
-const { app, server } = require("../app");
+const { app, server, name } = require("../app");
+
 
 describe("GET /", () => {
   it("should return 200 status and the correct message", async () => {
     const response = await request(app).get("/");
     expect(response.status).toBe(200 || 304);
-    expect(response.text).toBe("Welcome to GitShop!");
+    expect(response.text).toBe(`Welcome to ${name}!`);
   });
 });
 afterAll(() => {
